@@ -1,0 +1,1 @@
+web: gunicorn boleta_viajero.wsgi --log-file -
