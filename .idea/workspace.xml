@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boleta_viajero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/boleta_viajero/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +94,7 @@
       <workItem from="1615661728705" duration="179000" />
       <workItem from="1615661943877" duration="4876000" />
       <workItem from="1615672873454" duration="5083000" />
-      <workItem from="1615678564385" duration="739000" />
+      <workItem from="1615678564385" duration="1048000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1615677852938</created>
@@ -135,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615678917005</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Initial commit">
+      <created>1615679361582</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615679361582</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
