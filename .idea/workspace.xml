@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/redame.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,6 +98,7 @@
       <workItem from="1616253543741" duration="189000" />
       <workItem from="1616253919344" duration="2690000" />
       <workItem from="1616807837757" duration="224000" />
+      <workItem from="1617683223865" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1615677852938</created>
@@ -179,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615682575268</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="set readme">
+      <created>1617683386429</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617683386429</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +206,7 @@
     <MESSAGE value="create tipoCambioApi" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="allowed host" />
-    <option name="LAST_COMMIT_MESSAGE" value="allowed host" />
+    <MESSAGE value="set readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="set readme" />
   </component>
 </project>
