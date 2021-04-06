@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/redame.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boleta_viajero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/boleta_viajero/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +98,9 @@
       <workItem from="1615661943877" duration="4876000" />
       <workItem from="1615672873454" duration="5083000" />
       <workItem from="1615678564385" duration="1048000" />
+      <workItem from="1616253543741" duration="189000" />
+      <workItem from="1616253919344" duration="2690000" />
+      <workItem from="1616807837757" duration="224000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1615677852938</created>
@@ -162,7 +165,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615681479287</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="allowed host">
+      <created>1615682401365</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615682401365</updated>
+    </task>
+    <task id="LOCAL-00011" summary="allowed host">
+      <created>1615682575268</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615682575268</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +200,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create tipoCambioApi" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="allowed host" />
+    <option name="LAST_COMMIT_MESSAGE" value="allowed host" />
   </component>
 </project>
