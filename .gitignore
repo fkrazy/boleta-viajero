@@ -267,3 +267,4 @@ fabric.properties
 /.env
 /.idea/
 /venv/
+/venv/
