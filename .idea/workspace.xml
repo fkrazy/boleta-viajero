@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="" />
+    <list default="true" id="6d6a913e-8c2d-40ba-a385-fe7edf24560e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boleta_viajero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/boleta_viajero/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +40,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
+    <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -98,7 +105,11 @@
       <workItem from="1616253543741" duration="189000" />
       <workItem from="1616253919344" duration="2690000" />
       <workItem from="1616807837757" duration="224000" />
-      <workItem from="1617683223865" duration="403000" />
+      <workItem from="1617683223865" duration="2406000" />
+      <workItem from="1617854742957" duration="390000" />
+      <workItem from="1618069375597" duration="1025000" />
+      <workItem from="1618547047232" duration="222000" />
+      <workItem from="1618672850676" duration="4586000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1615677852938</created>
