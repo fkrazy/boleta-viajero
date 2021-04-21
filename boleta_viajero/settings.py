@@ -42,9 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'bearer_auth',
     'common',
     'paises'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'bearer_auth.authentication.BearerTokenAuth',
+    ],
+}
+TOKEN_EXPIRES_IN = 2 #2hours
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
