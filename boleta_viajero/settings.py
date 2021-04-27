@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'common',
     'paises',
     'Boletas',
-    'paises',
     'bitacora'
 ]
 
