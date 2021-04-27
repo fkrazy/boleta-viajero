@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'bearer_auth',
     'common',
-    'paises'
+    'paises',
+    'Boletas'
 ]
 
 REST_FRAMEWORK = {
