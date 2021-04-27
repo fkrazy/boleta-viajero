@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'bearer_auth',
     'common',
-    'paises'
+    'paises',
+    'bitacora'
 ]
 
 REST_FRAMEWORK = {
