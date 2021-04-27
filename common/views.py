@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from zeep import Client
 
+
 class TipoCambioView(APIView):
     """
     View to list all users in the system.
