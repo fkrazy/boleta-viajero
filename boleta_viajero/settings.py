@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'bearer_auth',
     'common',
     'paises',
+    'Boletas',
+    'paises',
     'bitacora'
 ]
 
