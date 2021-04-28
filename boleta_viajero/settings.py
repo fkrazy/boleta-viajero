@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'common',
     'paises',
     'Boletas',
-    'bitacora'
+    'bitacora',
+    'transporte'
 ]
 
 REST_FRAMEWORK = {
