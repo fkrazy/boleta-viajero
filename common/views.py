@@ -1,6 +1,8 @@
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from zeep import Client
+
 
 class TipoCambioView(APIView):
     """
@@ -9,6 +11,7 @@ class TipoCambioView(APIView):
     * Requires token authentication.
     * Only admin users are able to access this view.
     """
+
     def get(self, request, format=None):
         """
         Return a list of all users.
@@ -17,3 +20,14 @@ class TipoCambioView(APIView):
         client = Client(wsdl)
         response = client.service.TipoCambioDia()
         return Response(response['CambioDolar']['VarDolar'][0]['referencia'])
+
+
+class GetGroups(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        groups = request.user.groups.values_list('name', flat=True)  # QuerySet Object
+        return Response(list(groups))
