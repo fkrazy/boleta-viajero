@@ -45,8 +45,10 @@ INSTALLED_APPS = [
     'bearer_auth',
     'common',
     'paises',
-    'Boletas',
-    'bitacora'
+    'viajeros',
+    'bitacora',
+    'transporte',
+    'monedas'
 ]
 
 REST_FRAMEWORK = {
