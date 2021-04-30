@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from paises.models import Pais, Aduana
 
 
-class PaisesSerializer(serializers.Serializer):
+class PaisesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pais
         fields = "__all__"
@@ -22,7 +22,7 @@ class PaisesViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-class AduanasSerializer(serializers.Serializer):
+class AduanasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aduana
         fields = "__all__"
