@@ -2,10 +2,43 @@ from django.shortcuts import render
 
 from rest_framework import viewsets, serializers
 from rest_framework.permissions import IsAuthenticated
+
+from monedas.models import EquipajeExtra, DetalleValoresMonetarios
+from transporte.models import transporte
+from viajeros.models import Viajero
 from .models import bitacora
 
 
-class BitacoraSerializer(serializers.Serializer):
+class TransportesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = transporte
+        fields = "__all__"
+
+
+class DetallesValoresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DetalleValoresMonetarios
+        fields = "__all__"
+
+
+class ViajeroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Viajero
+        fields = "__all__"
+
+
+class EquipajeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EquipajeExtra
+        fields = "__all__"
+
+
+class BitacoraSerializer(serializers.ModelSerializer):
+    viajero = ViajeroSerializer(many=False)
+    equipajes_extra = EquipajeSerializer(many=True)
+    detallesValoresMonetarios = DetallesValoresSerializer(many=True)
+    transporte = TransportesSerializer(many=False)
+
     class Meta:
         model = bitacora
         fields = "__all__"

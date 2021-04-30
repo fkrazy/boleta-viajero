@@ -10,4 +10,4 @@ class Pais(models.Model):
 class Aduana(models.Model):
     clasificacion = models.CharField(max_length=15)
     nombre = models.CharField(max_length=80)
-    pais = models.ForeignKey(Pais, verbose_name='pais', related_name="paises", on_delete=models.PROTECT)
+    pais = models.ForeignKey(Pais, verbose_name='pais', related_name="aduanas", on_delete=models.PROTECT)
