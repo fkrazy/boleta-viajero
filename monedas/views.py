@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from monedas.models import Moneda, MaterialPrecioso
 
 
-class MaterialSerializer(serializers.Serializer):
+class MaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = MaterialPrecioso
         fields = "__all__"
@@ -20,7 +20,7 @@ class MaterialViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-class MonedaSerializer(serializers.Serializer):
+class MonedaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Moneda
         fields = "__all__"
