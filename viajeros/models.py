@@ -3,6 +3,7 @@ from paises.models import Pais
 
 
 class Viajero (models.Model):
+    email = models.EmailField(null=True)
     numero_documento = models.IntegerField()
     tipo_documento = models.CharField(max_length=10, default="")
     primer_nombre = models.CharField(max_length=45, default="")
