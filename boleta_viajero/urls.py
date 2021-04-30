@@ -20,10 +20,12 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 from common.urls import urlpatterns as common_urls
 from bitacora.urls import urlpatterns as bitacora_urls
+from paises.urls import urlpatterns as paises_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('common/', include(common_urls)),
     path('auth/token', ObtainToken.as_view()),
-    path('api/bitacoras', include(bitacora_urls))
+    path('api/bitacoras', include(bitacora_urls)),
+    path('api/paises', include(paises_urls))
 ]
