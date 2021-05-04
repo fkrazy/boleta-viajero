@@ -4,7 +4,7 @@ from paises.models import Pais
 
 class Viajero (models.Model):
     email = models.EmailField(null=True)
-    numero_documento = models.IntegerField()
+    numero_documento = models.CharField(max_length=45, default="")
     tipo_documento = models.CharField(max_length=10, default="")
     primer_nombre = models.CharField(max_length=45, default="")
     segundo_nombre = models.CharField(max_length=45, default="")
