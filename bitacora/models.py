@@ -7,7 +7,15 @@ from viajeros.models import Viajero
 
 
 class bitacora (models.Model):
-    accion = models.CharField(max_length=8, default="")
+    CREADO = 1
+    VALIDADO = 2
+    TERMINADO = 3
+    ESTADOS = (
+        (CREADO, "Creado"),
+        (VALIDADO, "Validado"),
+        (TERMINADO, "Terminado")
+    )
+    accion = models.SmallIntegerField(choices=ESTADOS, default=CREADO)
     fecha = models.DateField()
     motivo_viaje = models.CharField(max_length=20, default="")
     aduana = models.ForeignKey(Aduana, on_delete=models.CASCADE, null=True)

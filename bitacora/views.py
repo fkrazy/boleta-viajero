@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from io import BytesIO
+
+import qrcode
+from django.core.mail import EmailMessage
 
 from rest_framework import viewsets, serializers
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from monedas.models import EquipajeExtra, DetalleValoresMonetarios
 from transporte.models import transporte
@@ -51,3 +56,28 @@ class BitacoraViewSet(viewsets.ModelViewSet):
     queryset = bitacora.objects.all()
     serializer_class = BitacoraSerializer
     permission_classes = [IsAuthenticated]
+
+    @action(detail=True, methods=["post"])
+    def validate(self, request, pk=None):
+        bitacora_obj = self.get_object()
+        if bitacora_obj.accion == bitacora_obj.CREADO:
+            bitacora_obj.accion = bitacora_obj.VALIDADO
+            qr = qrcode.QRCode()
+            qr.make(f"{bitacora_obj.viajero.numero_documento},{bitacora_obj.fecha}")
+            qr = qr.make_image()
+            email = EmailMessage(
+                'Boleta Validada',
+                'Se adjunta la imagen qr para que puedan validar la boleta en ventanilla',
+                'frankuniversidad12@gmail.com',
+                [bitacora_obj.viajero.email],
+            )
+            stream = BytesIO()
+            qr.save(stream, format="png")
+            stream.seek(0)
+            imgObj = stream.read()
+            email.attach('boleta.png', imgObj, 'image/png')
+            email.send()
+            bitacora_obj.save()
+            return Response({'status': 'validado'})
+        else:
+            return Response({'status': 'bitacora en estado incorrecto'})
