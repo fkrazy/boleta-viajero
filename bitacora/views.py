@@ -1,7 +1,9 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets, serializers
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from monedas.models import EquipajeExtra, DetalleValoresMonetarios
 from transporte.models import transporte
@@ -51,3 +53,13 @@ class BitacoraViewSet(viewsets.ModelViewSet):
     queryset = bitacora.objects.all()
     serializer_class = BitacoraSerializer
     permission_classes = [IsAuthenticated]
+
+    @action(detail=True, methods=["post"])
+    def validate(self, request, pk=None):
+        bitacora = self.get_object()
+        if bitacora.accion == bitacora.CREADO:
+            bitacora.accion = bitacora.VALIDADO
+            bitacora.save()
+            return Response({'status': 'validado'})
+        else:
+            return Response({'status': 'bitacora en estado incorrecto'})
