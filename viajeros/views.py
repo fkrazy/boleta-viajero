@@ -6,6 +6,7 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from bitacora.models import bitacora
 from paises.models import Pais
 from viajeros.models import Viajero
 
@@ -66,3 +67,18 @@ class ViajerosRepublicaView(APIView):
         return Response(serializer.data)
 
 
+class Viajeros10kView(APIView):
+    """
+    View to list all users in the system.
+
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        menor_10 = bitacora.objects.filter(dinero_mayor_diezmil=False).count()
+        mayor_10 = bitacora.objects.filter(dinero_mayor_diezmil=True).count()
+        return Response(dict(menor_10=menor_10, mayor_10=mayor_10))
