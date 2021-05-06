@@ -49,6 +49,87 @@ class BitacoraSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# serializers para api mostrar datos formulario viajero
+class TransportesDetalleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = transporte
+        fields = "__all__"
+
+
+class DetallesValoresDetalleSerializer(serializers.ModelSerializer):
+    # slugrelatedfield de moneda y material
+    moneda = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='moneda'
+    )
+
+    material = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='titulo'
+    )
+
+    class Meta:
+        model = DetalleValoresMonetarios
+        fields = "__all__"
+
+
+class ViajeroDetalleSerializer(serializers.ModelSerializer):
+    # slugrelatedfield de nacionalidad y pais residencia
+    nacionalidad = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='nombre_nacionalidad'
+    )
+
+    pais_residencia = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='nombre_pais'
+    )
+
+    class Meta:
+        model = Viajero
+        fields = "__all__"
+
+
+class EquipajeDetalleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EquipajeExtra
+        fields = "__all__"
+
+
+class BitacoraDetalleSerializer(serializers.ModelSerializer):
+    viajero = ViajeroDetalleSerializer(many=False)
+    equipajes_extra = EquipajeDetalleSerializer(many=True)
+    detallesValoresMonetarios = DetallesValoresDetalleSerializer(many=True)
+    transporte = TransportesDetalleSerializer(many=False)
+
+    # slugrelatedfield de pais procedencia, pais destino y aduana
+    pais_procedencia = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='nombre_pais'
+    )
+
+    pais_destino = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='nombre_pais'
+    )
+
+    aduana = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='nombre'
+    )
+
+    class Meta:
+        model = bitacora
+        fields = "__all__"
+
+
 class BitacoraViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
@@ -81,3 +162,9 @@ class BitacoraViewSet(viewsets.ModelViewSet):
             return Response({'status': 'validado'})
         else:
             return Response({'status': 'bitacora en estado incorrecto'})
+
+    @action(detail=True, methods=["get"])
+    def detalle(self, request, pk=None):
+        bitacora = self.get_object()
+        serializer = BitacoraDetalleSerializer(bitacora)
+        return Response(serializer.data)
