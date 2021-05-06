@@ -7,6 +7,7 @@ from viajeros.models import Viajero
 
 
 class bitacora (models.Model):
+    objects = None
     CREADO = 1
     VALIDADO = 2
     TERMINADO = 3
