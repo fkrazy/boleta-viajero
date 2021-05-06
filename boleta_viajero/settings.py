@@ -168,3 +168,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "frankuniversidad12@gmail.com"
 EMAIL_HOST_PASSWORD = "cirO2.123"
+
+CORS_ORIGIN_WHITELIST = [
+    'https://localhost:4200'
+]
