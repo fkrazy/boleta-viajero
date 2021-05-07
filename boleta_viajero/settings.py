@@ -30,7 +30,7 @@ SECRET_KEY = 'a&t+5p)^8_&7+_hig87s6l!=2la-i-(2prdc)#q(zd04d8nczv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['boletoviajero.herokuapp.com']
+ALLOWED_HOSTS = ['boletoviajero.herokuapp.com', ]
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'bearer_auth',
+    'corsheaders',
     'qrcode',
     'common',
     'paises',
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -135,7 +137,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
 # heroku settings
 # Static files (CSS, JavaScript, Images)
@@ -169,6 +170,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "frankuniversidad12@gmail.com"
 EMAIL_HOST_PASSWORD = "cirO2.123"
 
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
     'https://localhost:4200'
 ]
