@@ -2,6 +2,7 @@ from io import BytesIO
 
 import qrcode
 from django.core.mail import EmailMessage
+from django.db import transaction
 
 from rest_framework import viewsets, serializers
 from rest_framework.decorators import action
@@ -169,15 +170,44 @@ class BitacoraViewSet(viewsets.ModelViewSet):
         serializer = BitacoraDetalleSerializer(bitacora)
         return Response(serializer.data)
 
+    @transaction.atomic
     def perform_create(self, serializer):
         viajero_obj = serializer.validated_data.pop('viajero')
-        viajero = Viajero.objects.get(numero_documento=viajero_obj.get("numero_documento"))
+        viajero_obj = set_viajero_detail_as_index(viajero_obj)
+        viajero = Viajero.objects.filter(numero_documento=viajero_obj.get("numero_documento")).first()
         if viajero:
             viajero.save()
         else:
-            viajero_obj.save()
+            viajero_serializer = ViajeroSerializer(data=viajero_obj)
+            viajero_serializer.is_valid(raise_exception=True)
+            viajero = viajero_serializer.save()
         equipajes_extra = serializer.validated_data.pop('equipajes_extra', None)
-        detallesValoresMonetarios = serializer.validated_data.pop('detallesValoresMonetarios', None)
+        detalles_valores_monetarios = serializer.validated_data.pop('detallesValoresMonetarios', None)
         transporte = serializer.validated_data.pop('transporte')
-        serializer.save()
+        bitacora = serializer.save()
+        bitacora.viajero_id = viajero.id
+        equipajes_extra_serializer = EquipajeSerializer(data=equipajes_extra, many=True)
+        equipajes_extra_serializer.is_valid(raise_exception=True)
+        equipajes = equipajes_extra_serializer.save()
+        bitacora.equipajes_extra.set(equipajes)
+        detalles_valores_monetarios = list(map(set_valores_detail_as_index, detalles_valores_monetarios))
+        detalles_valores_monetarios_serializer = DetallesValoresSerializer(data=detalles_valores_monetarios, many=True)
+        detalles_valores_monetarios_serializer.is_valid(raise_exception=True)
+        valores = detalles_valores_monetarios_serializer.save()
+        bitacora.detallesValoresMonetarios.set(valores)
+        transportes_serializer = TransportesSerializer(data=transporte)
+        transportes_serializer.is_valid(raise_exception=True)
+        transporte = transportes_serializer.save()
+        bitacora.transporte_id = transporte.id
 
+
+def set_valores_detail_as_index(val):
+    val["moneda"] = val["moneda"].id
+    val["material"] = val["material"].id
+    return val
+
+
+def set_viajero_detail_as_index(val):
+    val["nacionalidad"] = val["nacionalidad"].id
+    val["pais_residencia"] = val["pais_residencia"].id
+    return val
