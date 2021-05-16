@@ -168,3 +168,16 @@ class BitacoraViewSet(viewsets.ModelViewSet):
         bitacora = self.get_object()
         serializer = BitacoraDetalleSerializer(bitacora)
         return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        viajero_obj = serializer.validated_data.pop('viajero')
+        viajero = Viajero.objects.get(numero_documento=viajero_obj.get("numero_documento"))
+        if viajero:
+            viajero.save()
+        else:
+            viajero_obj.save()
+        equipajes_extra = serializer.validated_data.pop('equipajes_extra', None)
+        detallesValoresMonetarios = serializer.validated_data.pop('detallesValoresMonetarios', None)
+        transporte = serializer.validated_data.pop('transporte')
+        serializer.save()
+
