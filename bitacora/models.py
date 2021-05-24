@@ -7,6 +7,7 @@ from viajeros.models import Viajero
 
 
 class bitacora (models.Model):
+    objects = None
     CREADO = 1
     VALIDADO = 2
     TERMINADO = 3
@@ -19,7 +20,7 @@ class bitacora (models.Model):
     fecha = models.DateField()
     motivo_viaje = models.CharField(max_length=20, default="")
     aduana = models.ForeignKey(Aduana, on_delete=models.CASCADE, null=True)
-    viajero = models.ForeignKey(Viajero, on_delete=models.CASCADE, null=True)
+    viajero = models.ForeignKey(Viajero, related_name="bitacoras", on_delete=models.CASCADE, null=True)
     transporte = models.ForeignKey(transporte, on_delete=models.CASCADE, null=True)
     pais_procedencia = models.ForeignKey(Pais, verbose_name='pais', related_name="paises_bitacora",
                                          on_delete=models.PROTECT)
