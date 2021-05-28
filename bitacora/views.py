@@ -202,8 +202,8 @@ class BitacoraViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"])
     def ventanilla(self, request, pk=None):
-        obj_bitacora = self.get_queryset().filter(Viajero__numero_documento=self.kwargs.get('doc'),
-                                                  fecha=self.kwargs.get('fecha'))
+        obj_bitacora = self.get_queryset().filter(viajero__numero_documento=request.query_params.get("doc"),
+                                                  fecha=request.query_params['fecha']).first()
         serializer = ObtenerFormularioQRSerializer(obj_bitacora)
         return Response(serializer.data)
 
