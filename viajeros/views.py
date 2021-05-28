@@ -82,3 +82,5 @@ class Viajeros10kView(APIView):
         menor_10 = bitacora.objects.filter(dinero_mayor_diezmil=False).count()
         mayor_10 = bitacora.objects.filter(dinero_mayor_diezmil=True).count()
         return Response(dict(menor_10=menor_10, mayor_10=mayor_10))
+
+
