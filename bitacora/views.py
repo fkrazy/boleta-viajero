@@ -200,6 +200,13 @@ class BitacoraViewSet(viewsets.ModelViewSet):
         transporte = transportes_serializer.save()
         bitacora.transporte_id = transporte.id
 
+    @action(detail=False, methods=["get"])
+    def ventanilla(self, request, pk=None):
+        obj_bitacora = self.get_queryset().filter(Viajero__numero_documento=self.kwargs.get('doc'),
+                                                  fecha=self.kwargs.get('fecha'))
+        serializer = ObtenerFormularioQRSerializer(obj_bitacora)
+        return Response(serializer.data)
+
 
 def set_valores_detail_as_index(val):
     val["moneda"] = val["moneda"].id
@@ -211,3 +218,17 @@ def set_viajero_detail_as_index(val):
     val["nacionalidad"] = val["nacionalidad"].id
     val["pais_residencia"] = val["pais_residencia"].id
     return val
+
+
+class DatosViajeroQRSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Viajero
+        fields = ('numero_documento', 'primer_nombre', 'segundo_nombre', 'tercer_nombre', 'primer_apellido',
+                  'segundo_apellido', 'tercer_apellido')
+
+
+class ObtenerFormularioQRSerializer(serializers.ModelSerializer):
+    viajero = DatosViajeroQRSerializer(many=False)
+    class Meta:
+        model = bitacora
+        fields = ('viajero', 'get_accion_display')
